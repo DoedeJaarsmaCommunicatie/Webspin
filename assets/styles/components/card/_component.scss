@@ -1,0 +1,15 @@
+@use "variables" as v;
+
+.card {}
+
+.card-header {}
+
+.card-header-img {
+  height: 300px;
+  width: 100%;
+  object-fit: none;
+  object-position: center center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+  margin-bottom: .275rem;
+}

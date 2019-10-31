@@ -1,0 +1,11 @@
+@use "variables" as v;
+
+.custom-logo-wrapper {}
+
+.custom-logo-image {
+  max-width: v.$logo-width;
+}
+
+.custom-logo-text {
+  font-size: v.$font-size;
+}

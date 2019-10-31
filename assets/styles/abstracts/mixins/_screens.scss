@@ -1,0 +1,23 @@
+@use "abstracts/functions/screens" as *;
+
+@mixin screen-below($screen) {
+  @if not $screen {
+    @error 'Screen not supplied at screen-below';
+  }
+  $mw: theme-get-screen($screen);
+
+  @media screen and (max-width: $mw) {
+    @content
+  }
+}
+
+@mixin screen-above($screen) {
+  @if not $screen {
+    @error 'Screen not supplied at screen-above';
+  }
+  $mw: theme-get-screen($screen);
+
+  @media screen and (min-width: $mw) {
+    @content
+  }
+}

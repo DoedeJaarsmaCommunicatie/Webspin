@@ -1,0 +1,9 @@
+@use "abstracts/variables/screens" as *;
+
+@function theme-get-screen($screen: 'lg') {
+  @if not map-has-key($screens, $screen) {
+    @error 'Screen size does not exist (' + $screen + ')';
+  }
+
+  @return map-get($screens, $screen);
+}

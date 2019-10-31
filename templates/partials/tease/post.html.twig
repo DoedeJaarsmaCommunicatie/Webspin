@@ -1,0 +1,18 @@
+{% if post is defined %}
+    <article class="article post-{{ post.post_type }} post-card card">
+        {% do action('webspin/post-card/pre', post) %}
+        <figure class="card-header">
+            <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.thumbnail.alt }}" class="card-header-img">
+        </figure>
+        <section class="card-body content">
+            {% do action('webspin/post-card/pre/title', post) %}
+            <h2 class="post-card-title">
+                {{ post.title }}
+            </h2>
+            {% do action('webspin/post-card/pre/content', post) %}
+                {{ post.content|excerpt(25) }}
+            {% do action('webspin/post-card/post/content', post) %}
+        </section>
+        {% do action('webspin/post-card/post', post) %}
+    </article>
+{% endif %}

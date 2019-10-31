@@ -1,0 +1,17 @@
+{% if theme.theme_mod('custom_logo') %}
+    {% set _logo = Image(theme.theme_mod('custom_logo')) %}
+{% else %}
+    {% set _logo = false %}
+{% endif %}
+
+<a href="{{ site.link }}">
+    {% if _logo %}
+        <figure content="custom-logo-wrapper">
+            <img src="{{ _logo.src }}" alt="{{ _logo.alt }}" class="custom-logo-image">
+        </figure>
+    {% else %}
+        <span class="custom-logo-text">
+            {{ site.title }}
+        </span>
+    {% endif %}
+</a>
