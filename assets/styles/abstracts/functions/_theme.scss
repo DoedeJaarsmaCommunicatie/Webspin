@@ -1,0 +1,38 @@
+@use "../variables/colors" as *;
+
+@function get-theme-color($color: 'primary', $inverted: false, $complementary: false) {
+  @if not map-has-key($colors, $color) {
+    @error 'Colors does not contain ' + $color;
+  }
+
+  @if $inverted and $complementary {
+    @error 'Color can not be both complementary and inverted';
+  }
+  $color-map: map-get($colors, $color); // Returns a second map
+  $color-map-length: length($color-map);
+
+
+  @if not $inverted and not $complementary {
+    @if not ($color-map-length > 0) {
+      @error 'Normal color not existing.';
+    }
+
+    @return nth($color-map, 1);
+  }
+
+  @if $inverted and not $complementary {
+    @if not ($color-map-length > 1) {
+      @error 'Inverted color not found';
+    }
+
+    @return nth($color-map, 2);
+  }
+
+  @if not $inverted and $complementary {
+    @if not ($color-map-length > 2) {
+      @error 'Complementary color not found';
+    }
+
+    @return nth($color-map, 3);
+  }
+}
