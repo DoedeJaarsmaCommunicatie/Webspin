@@ -1,0 +1,15 @@
+@use "../functions/colors" as *;
+
+$primary: hsla(152, 52%, 62%, 1) !default;
+$primary-invert: find-color-invert($primary) !default;
+$primary-complement: color-complement($primary) !default;
+
+
+$colors: () !default;
+
+$colors: map-merge(
+  $colors,
+  (
+    'primary' : ($primary, $primary-invert, $primary-complement)
+  )
+);
