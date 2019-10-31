@@ -1,0 +1,12 @@
+node_modules/
+.idea/
+.gitignore
+composer.json
+composer.lock
+mix-manifest.json
+package.json
+tailwind.config.js
+uwire.config.json
+webpack.mix.js
+yarn.lock
+assets/
