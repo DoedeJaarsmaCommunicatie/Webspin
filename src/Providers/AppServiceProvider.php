@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\WP;
+use ElementorPro\Modules\ThemeBuilder\Classes\Locations_Manager;
 
 use function do_action;
 
@@ -34,7 +35,30 @@ class AppServiceProvider
     public function register(): void
     {
         $this->updateChecker();
+        add_action('elementor/theme/register_locations', [ $this, 'registerElementorLocations']);
         do_action('webspin/app/registered');
+    }
+    
+    /**
+     * @param Locations_Manager $elementor_theme_manager
+     */
+    public function registerElementorLocations($elementor_theme_manager): void
+    {
+        $elementor_theme_manager->register_location(
+            'footer',
+            [
+                'label'     => 'Footer',
+                'multiple'  => false,
+            ]
+        );
+        
+        $elementor_theme_manager->register_location(
+            'footer-top',
+            [
+                'label'     => 'Footer topper',
+                'multiple'  => false,
+            ]
+        );
     }
     
     protected function updateChecker(): void
