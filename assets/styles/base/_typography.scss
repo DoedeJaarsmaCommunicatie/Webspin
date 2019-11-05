@@ -1,0 +1,46 @@
+@use "abstracts/" as *;
+@use "abstracts/variables/typography" as t;
+
+@if (t.$base-font-is-google) {
+  @import url("https://fonts.googleapis.com/css?family=#{t.$base-font}&display=swap");
+
+  html {
+    font-family: t.$base-font, sans-serif;
+    font-size: t.$base-font-size;
+  }
+}
+
+.content {
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    &:not(:last-of-type) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  a {
+    color: get-theme-color('primary', false, true);
+  }
+}

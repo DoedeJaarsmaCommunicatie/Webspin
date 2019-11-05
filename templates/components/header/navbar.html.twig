@@ -1,0 +1,14 @@
+<button class="js-menu-open-button menu-open-button lg:hidden ml-auto">
+        <i class="fas fa-bars"></i>
+</button>
+<nav class="navbar js-nav-menu">
+    {% for item in primaryMenu.items %}
+        <a href="{{ item.link }}"
+           class="navmenu-item {{ item.class|join(' ') }}"
+           target="{{ item.target }}"
+           title="{{ item.title }}"
+        >
+            {{ item.title }}
+        </a>
+    {% endfor %}
+</nav>

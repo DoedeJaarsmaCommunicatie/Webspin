@@ -1,0 +1,6 @@
+@use "abstracts" as *;
+
+$button-background: transparent;
+$button-background--active: $primary-complement;
+$button-color: $primary-complement;
+$button-color--active: $white;

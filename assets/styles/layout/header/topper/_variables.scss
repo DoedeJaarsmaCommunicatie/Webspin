@@ -1,0 +1,4 @@
+@use "abstracts" as *;
+
+$background-color: get-theme-color('primary');
+$text-color: get-theme-color('primary', true);

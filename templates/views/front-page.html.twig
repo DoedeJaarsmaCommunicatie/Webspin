@@ -1,0 +1,16 @@
+{% extends 'layouts/app.twig' %}
+
+{% block content %}
+    <main class="page-main-content front-page-main-content">
+        <section class="front-page-content content">
+            {{ post.content }}
+        </section>
+        <div class="container mx-auto px-2 lg:px-0">
+            <section class="front-page-posts posts">
+                {% for _post in posts %}
+                    {{ include('partials/tease/post.html.twig', { post: _post }, with_context = false) }}
+                {% endfor %}
+            </section>
+        </div>
+    </main>
+{% endblock %}

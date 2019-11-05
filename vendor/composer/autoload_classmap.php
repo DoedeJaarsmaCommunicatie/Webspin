@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
+    'App\\Controllers\\Filters\\PostCard' => $baseDir . '/src/Controllers/Filters/PostCard.php',
     'App\\Exceptions\\CookieNotSetException' => $baseDir . '/src/Exceptions/CookieNotSetException.php',
     'App\\Exceptions\\MultiSiteNotEnabledException' => $baseDir . '/src/Exceptions/MultiSiteNotEnabledException.php',
     'App\\Exceptions\\ProductNotFoundException' => $baseDir . '/src/Exceptions/ProductNotFoundException.php',
@@ -18,6 +19,7 @@ return array(
     'App\\Helpers\\Template' => $baseDir . '/src/helpers/Template.php',
     'App\\Helpers\\WP' => $baseDir . '/src/helpers/WP.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/src/Providers/AppServiceProvider.php',
+    'App\\Providers\\FilterServiceProvider' => $baseDir . '/src/Providers/FilterServiceProvider.php',
     'App\\Providers\\MenuServiceProvider' => $baseDir . '/src/Providers/MenuServiceProvider.php',
     'Asm89\\Twig\\CacheExtension\\CacheProviderInterface' => $vendorDir . '/asm89/twig-cache-extension/lib/Asm89/Twig/CacheExtension/CacheProviderInterface.php',
     'Asm89\\Twig\\CacheExtension\\CacheProvider\\DoctrineCacheAdapter' => $vendorDir . '/asm89/twig-cache-extension/lib/Asm89/Twig/CacheExtension/CacheProvider/DoctrineCacheAdapter.php',
