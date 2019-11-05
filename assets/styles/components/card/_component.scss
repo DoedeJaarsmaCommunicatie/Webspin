@@ -1,6 +1,8 @@
 @use "variables" as v;
 
-.card {}
+.card {
+  position: relative;
+}
 
 .card-header {}
 
@@ -12,4 +14,31 @@
   border-radius: 5px;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
   margin-bottom: .275rem;
+}
+
+.read-more {
+  padding: .5rem;
+  display: inline-block;
+  margin-top: .5rem;
+  border-radius: 8px;
+  background: v.$button-background;
+  color: v.$button-color;
+
+  transition: all 225ms ease;
+
+  &:hover {
+    background: v.$button-background--active;
+    color: v.$button-color--active;
+    transition: all 225ms ease;
+  }
+
+  &::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: ' ';
+    background: transparent;
+    position: absolute;
+  }
 }

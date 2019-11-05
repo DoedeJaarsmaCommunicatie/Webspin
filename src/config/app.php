@@ -1,10 +1,13 @@
 <?php
+
 namespace App;
 
 use App\Providers\MenuServiceProvider;
+use App\Providers\FilterServiceProvider;
 
 return [
-	'providers'     => [
-	    MenuServiceProvider::class
+    'providers'     => [
+        FilterServiceProvider::class,
+        MenuServiceProvider::class,
     ]
 ];

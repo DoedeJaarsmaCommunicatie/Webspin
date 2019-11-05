@@ -2,14 +2,18 @@
 
 $primary: hsla(152, 52%, 62%, 1) !default;
 $primary-invert: find-color-invert($primary) !default;
-$primary-complement: color-complement($primary) !default;
+$primary-complement: find-color-complement($primary) !default;
 
+$white: hsla(0, 100%, 100%, 1) !default;
+$white-invert: find-color-invert($white) !default;
+$white-complement: find-color-complement($white) !default;
 
 $colors: () !default;
 
 $colors: map-merge(
   $colors,
   (
-    'primary' : ($primary, $primary-invert, $primary-complement)
+    'primary': ($primary, $primary-invert, $primary-complement),
+    'white': ($white, $white-invert, $white-complement)
   )
 );

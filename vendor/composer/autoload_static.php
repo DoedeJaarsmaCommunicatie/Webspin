@@ -108,6 +108,7 @@ class ComposerStaticInitd478b73b9349bee22e9b4091ab0df69b
 
     public static $classMap = array (
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
+        'App\\Controllers\\Filters\\PostCard' => __DIR__ . '/../..' . '/src/Controllers/Filters/PostCard.php',
         'App\\Exceptions\\CookieNotSetException' => __DIR__ . '/../..' . '/src/Exceptions/CookieNotSetException.php',
         'App\\Exceptions\\MultiSiteNotEnabledException' => __DIR__ . '/../..' . '/src/Exceptions/MultiSiteNotEnabledException.php',
         'App\\Exceptions\\ProductNotFoundException' => __DIR__ . '/../..' . '/src/Exceptions/ProductNotFoundException.php',
@@ -119,6 +120,7 @@ class ComposerStaticInitd478b73b9349bee22e9b4091ab0df69b
         'App\\Helpers\\Template' => __DIR__ . '/../..' . '/src/helpers/Template.php',
         'App\\Helpers\\WP' => __DIR__ . '/../..' . '/src/helpers/WP.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/src/Providers/AppServiceProvider.php',
+        'App\\Providers\\FilterServiceProvider' => __DIR__ . '/../..' . '/src/Providers/FilterServiceProvider.php',
         'App\\Providers\\MenuServiceProvider' => __DIR__ . '/../..' . '/src/Providers/MenuServiceProvider.php',
         'Asm89\\Twig\\CacheExtension\\CacheProviderInterface' => __DIR__ . '/..' . '/asm89/twig-cache-extension/lib/Asm89/Twig/CacheExtension/CacheProviderInterface.php',
         'Asm89\\Twig\\CacheExtension\\CacheProvider\\DoctrineCacheAdapter' => __DIR__ . '/..' . '/asm89/twig-cache-extension/lib/Asm89/Twig/CacheExtension/CacheProvider/DoctrineCacheAdapter.php',

@@ -1,7 +1,11 @@
 <?php
+
 namespace App\Providers;
 
+use App\Helpers\Str;
 use Timber\Menu;
+
+use function apply_filters;
 use function register_nav_menus;
 
 /**
@@ -35,7 +39,10 @@ class MenuServiceProvider
      */
     public function boot(): void
     {
-        register_nav_menus($this->menus);
+        
+        register_nav_menus(
+            apply_filters('webspin/menus/register', $this->menus)
+        );
         
         add_filter('timber/context', [ $this, 'registerContent' ]);
     }
@@ -50,7 +57,7 @@ class MenuServiceProvider
     public function registerContent($content)
     {
         foreach ($this->menus as $key => $name) {
-            $content[ \App\Helpers\Str::camel($key) ] = new Menu($key);
+            $content[ Str::camel($key) ] = new Menu($key);
         }
         return $content;
     }
