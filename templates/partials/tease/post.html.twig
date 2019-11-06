@@ -1,28 +1,31 @@
 {% if post is defined %}
+    {% set _thumbnail = post.thumbnail %}
     {% set _link = post.link|apply_filters('webspin/post-card/permalink') %}
     {% set _title = post.title|apply_filters('webspin/post-card/title') %}
     {% set _excerpt = post.content|apply_filters('webspin/post-card/content', post.excerpt, post.id) %}
 
     <article class="article post-{{ post.post_type }} post-card card">
         {% do action('webspin/post-card/pre', post) %}
-        <figure class="card-header">
-            <img src="{{ post.thumbnail.src('large') }}" alt="{{ post.thumbnail.alt }}" class="card-header-img">
-        </figure>
+        {% if _thumbnail %}
+            <figure class="card-header">
+                <img src="{{ _thumbnail.src('large')|apply_filters('webspin/post-card/thumbnail/src') }}"
+                     alt="{{ _thumbnail.alt|apply_filters('webspin/post-card/thumbnail/alt') }}"
+                     class="card-header-img" />
+            </figure>
+        {% endif %}
         <section class="card-body content">
             {% do action('webspin/post-card/pre/title', post) %}
 
             <h2 class="post-card-title">{{ _title }}</h2>
 
             {% do action('webspin/post-card/pre/content', post) %}
-                <p class="post-card-excerpt">
-                    {{ _excerpt }}
-                </p>
+                <p class="post-card-excerpt">{{ _excerpt }}</p>
             {% do action('webspin/post-card/post/content', post) %}
 
             <a class="read-more"
                href="{{ _link }}"
                target="_self"
-               title="Bekijk {{ _title }}">
+               title="{{ "Bekijk " ~ _title|apply_filters('webspin/post-card/post') }}">
                 Bekijk bericht
             </a>
         </section>
