@@ -25,9 +25,4 @@ mix
             require('autoprefixer'),
             ...purger
         ]
-    })
-    .webpackConfig({
-        output: {
-            publicPath: '/wp-content/themes/Webspin/'
-        }
     });
