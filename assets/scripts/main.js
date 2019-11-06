@@ -1,13 +1,24 @@
 import './bootstrap';
-import $ from 'jquery';
 import Router from './tools/Router';
 
-import common from './routes/Common';
-import home from './routes/Home';
+const common = async () =>
+    (await import(/* webpackChunkName: "dist/scripts/routes/common" */'./routes/Common')).default;
+const home = async () =>
+    (await import(/* webpackChunkName: "dist/scripts/routes/home" */ './routes/Home')).default;
+
 
 const router = new Router({
-    common,
-    home
+    common: common(),
+    home: home()
 });
 
-$(document).ready(() => router.loadEvents());
+function ready(fn) {
+    if (document.readyState !== 'loading'){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
+
+ready(() => router.loadEvents())
+
