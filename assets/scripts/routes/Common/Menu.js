@@ -1,53 +1,52 @@
-const MenuOpener = () => {
-    let [menuClass, menuButton] = [undefined, undefined];
+export default class MenuOpener {
+    constructor() {
+        this.menuClass = undefined;
+        this.menuButton = undefined;
+    }
 
-    return {
-        init() {
-            this.bodyCloseListener();
-            this.buttonOpenListener();
-        },
+    init() {
+        this.bodyCloseListener();
+        this.buttonOpenListener();
+    }
 
-        findOpenButton() {
-            return document.querySelector(menuButton);
-        },
-        findMenu() {
-            return document.querySelector(menuClass);
-        },
+    findOpenButton() {
+        return document.querySelector(this.menuButton);
+    }
+    findMenu() {
+        return document.querySelector(this.menuClass);
+    }
 
-        bodyCloseListener() {
-            const body = document.body;
-            const menu = this.findMenu();
-            const button = this.findOpenButton();
+    bodyCloseListener() {
+        const body = document.body;
+        const menu = this.findMenu();
+        const button = this.findOpenButton();
 
-            body.addEventListener('click', (e) => {
-                if (e.target === menu ||
-                    menu.contains(e.target) ||
-                    e.target === button ||
-                    button.contains(e.target)) {
-                    return;
-                }
+        body.addEventListener('click', (e) => {
+            if (e.target === menu ||
+                menu.contains(e.target) ||
+                e.target === button ||
+                button.contains(e.target)) {
+                return;
+            }
 
-                menu.classList.remove('active');
-            });
-        },
+            menu.classList.remove('active');
+        });
+    }
 
-        buttonOpenListener() {
-            const button = this.findOpenButton();
-            const menu = this.findMenu();
+    buttonOpenListener() {
+        const button = this.findOpenButton();
+        const menu = this.findMenu();
 
-            button.addEventListener('click', () => {
-                menu.classList.add('active');
-            });
-        },
+        button.addEventListener('click', () => {
+            menu.classList.add('active');
+        });
+    }
 
-        set menuSelector(name) {
-            menuClass = name;
-        },
+    set menuSelector(name) {
+        this.menuClass = name;
+    }
 
-        set buttonSelector(name) {
-            menuButton = name;
-        }
+    set buttonSelector(name) {
+        this.menuButton = name;
     }
 }
-
-export { MenuOpener };
