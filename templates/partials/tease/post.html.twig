@@ -15,7 +15,6 @@
         {% endif %}
         <section class="card-body content">
             {% do action('webspin/post-card/pre/title', post) %}
-
             <h2 class="post-card-title">{{ _title }}</h2>
 
             {% do action('webspin/post-card/pre/content', post) %}
@@ -29,7 +28,6 @@
                 Bekijk bericht
             </a>
         </section>
-
         {% do action('webspin/post-card/post', post) %}
     </article>
 {% endif %}
