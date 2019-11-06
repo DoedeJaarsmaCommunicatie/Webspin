@@ -6,4 +6,4 @@ export default {
     finalize() {
         // Javascript that fires on all pages. after page specific JS is fires.
     }
-}
+};

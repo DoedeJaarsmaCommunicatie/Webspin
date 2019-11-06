@@ -1,8 +1,6 @@
 const MenuOpener = () =>
     import(/* webpackChunkName: "dist/scripts/common/menu" */'./Common/Menu');
 
-
-
 export default {
     init() {
         // Javascript that fires on all pages.

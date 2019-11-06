@@ -24,54 +24,107 @@ function () {
 
     this.menuClass = undefined;
     this.menuButton = undefined;
+    this.menu = undefined;
+    this.button = undefined;
+    this.ACTIVE_CLASS = 'active';
   }
 
   _createClass(MenuOpener, [{
     key: "init",
     value: function init() {
+      this.fluidSetGetMenu();
       this.bodyCloseListener();
       this.buttonOpenListener();
     }
   }, {
-    key: "findOpenButton",
-    value: function findOpenButton() {
-      return document.querySelector(this.menuButton);
+    key: "fluidSetGetMenu",
+    value: function fluidSetGetMenu() {
+      if (this.menu) {
+        return this.menu;
+      }
+
+      this.menu = document.querySelector(this.menuSelector);
+
+      if (this.menu) {
+        return this.menu;
+      }
+
+      throw new Error('Menu not found');
     }
   }, {
-    key: "findMenu",
-    value: function findMenu() {
-      return document.querySelector(this.menuClass);
+    key: "fluidGetSetButton",
+    value: function fluidGetSetButton() {
+      if (this.button) {
+        return this.button;
+      }
+
+      this.button = document.querySelector(this.buttonSelector);
+
+      if (this.button) {
+        return this.button;
+      }
+
+      throw new Error('Button not found');
     }
   }, {
     key: "bodyCloseListener",
     value: function bodyCloseListener() {
+      var _this = this;
+
       var body = document.body;
-      var menu = this.findMenu();
-      var button = this.findOpenButton();
+      var menu = this.fluidSetGetMenu();
+      var button = this.fluidGetSetButton();
       body.addEventListener('click', function (e) {
         if (e.target === menu || menu.contains(e.target) || e.target === button || button.contains(e.target)) {
           return;
         }
 
-        menu.classList.remove('active');
+        _this.removeMenuActive();
       });
     }
   }, {
     key: "buttonOpenListener",
     value: function buttonOpenListener() {
-      var button = this.findOpenButton();
-      var menu = this.findMenu();
+      var _this2 = this;
+
+      var button = this.fluidGetSetButton();
       button.addEventListener('click', function () {
-        menu.classList.add('active');
+        return _this2.addMenuActive();
       });
     }
   }, {
+    key: "removeMenuActive",
+    value: function removeMenuActive() {
+      var menu = this.fluidSetGetMenu();
+      menu.classList.remove(this.ACTIVE_CLASS);
+    }
+  }, {
+    key: "addMenuActive",
+    value: function addMenuActive() {
+      var menu = this.fluidSetGetMenu();
+      menu.classList.add(this.ACTIVE_CLASS);
+    }
+  }, {
     key: "menuSelector",
+    get: function get() {
+      if (!this.menuClass) {
+        this.menuSelector = '.js-menu';
+      }
+
+      return this.menuClass;
+    },
     set: function set(name) {
       this.menuClass = name;
     }
   }, {
     key: "buttonSelector",
+    get: function get() {
+      if (!this.menuButton) {
+        this.buttonSelector = '.js-menu-button';
+      }
+
+      return this.menuButton;
+    },
     set: function set(name) {
       this.menuButton = name;
     }
