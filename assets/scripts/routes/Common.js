@@ -1,5 +1,5 @@
 const MenuOpener = () =>
-    import(/* webpackChunkName: "dist/scripts/common/menu" */'./Common/Menu');
+    import(/* webpackChunkName: "dist/scripts/common/menu" */ './Common/Menu');
 
 export default {
     init() {
@@ -12,14 +12,12 @@ export default {
     }
 };
 
-const menuLoaderBelowTablet = () => {
+const menuLoaderBelowTablet = async () => {
     if (window.screen.width < 1025) {
-        MenuOpener()
-            .then(res => {
-                const opener = new res.default();
-                opener.buttonSelector = '.js-menu-open-button';
-                opener.menuSelector = '.js-nav-menu';
-                opener.init();
-            });
+        const menuOpener = (await MenuOpener()).default;
+        const opener = new menuOpener();
+        opener.buttonSelector = '.js-menu-open-button';
+        opener.menuSelector = '.js-nav-menu';
+        opener.init();
     }
-};
+}

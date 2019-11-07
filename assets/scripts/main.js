@@ -1,16 +1,24 @@
-import $ from 'jquery';
+import './bootstrap';
 import Router from './tools/Router';
 
-import common from './routes/Common';
-import home from './routes/Home';
+const common = async () =>
+    (await import(/* webpackChunkName: "dist/scripts/routes/common" */'./routes/Common')).default;
+const home = async () =>
+    (await import(/* webpackChunkName: "dist/scripts/routes/home" */ './routes/Home')).default;
 
-__webpack_public_path__ = document.head.querySelector('meta[name="base_assets"]').content;
 
 const router = new Router({
-    common,
-    home
+    common: common(),
+    home: home()
 });
 
-window.router = router;
+function ready(fn) {
+    if (document.readyState !== 'loading'){
+        fn();
+    } else {
+        document.addEventListener('DOMContentLoaded', fn);
+    }
+}
 
-$(document).ready(() => router.loadEvents());
+ready(() => router.loadEvents())
+
